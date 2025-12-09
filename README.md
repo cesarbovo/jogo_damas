@@ -52,7 +52,7 @@ Este projeto foi desenhado para ser leve e portátil. Ele utiliza **apenas a Bib
 ### Como Rodar
 1.  Clone o repositório:
     ```bash
-    git clone [https://github.com/seu-usuario/damas-python-ai.git](https://github.com/seu-usuario/damas-python-ai.git)
+    git clone [https://github.com/cesarbovo/damas-python-ai.git](https://github.com/cesarbovo/damas-python-ai.git)
     cd damas-python-ai
     ```
 

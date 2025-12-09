@@ -4,50 +4,73 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-concluido-success)
 
-Uma implementação profissional do jogo de Damas (Regras Brasileiras/Internacionais 64 casas) desenvolvida em Python puro. O projeto conta com uma Engine de regras rigorosa, uma Interface Gráfica (GUI) responsiva e uma Inteligência Artificial baseada em algoritmos de busca competitiva.
+Uma implementação profissional do jogo de Damas (Regras Brasileiras/Internacionais em tabuleiro 8x8) desenvolvida inteiramente em Python. O projeto conta com uma Engine de validação rigorosa de regras, uma Interface Gráfica (GUI) nativa e uma Inteligência Artificial competitiva baseada em algoritmos de busca.
 
 ---
 
 ## ✨ Funcionalidades Principais
 
 ### 🧠 Inteligência Artificial (Minimax)
-- **Algoritmo Minimax:** Implementado com **Poda Alpha-Beta** para otimização de performance.
-- **Busca de Quiescência (Quiescence Search):** Evita o "Efeito Horizonte" em trocas complexas de peças, permitindo que a IA continue calculando capturas além da profundidade limite.
-- **Heurística Posicional:** Utiliza "mapas de calor" (Heatmaps) para valorizar o domínio do centro e proteção da base.
-- **Avaliação Dinâmica:** Diferencia pesos para Pedras, Damas, Mobilidade e Defesa.
+* **Algoritmo Minimax:** Otimizado com **Poda Alpha-Beta** para máxima eficiência na tomada de decisão.
+* **Busca de Quiescência (Quiescence Search):** Resolve o "Efeito Horizonte", permitindo que a IA continue calculando trocas de capturas além da profundidade limite para evitar jogadas suicidas.
+* **Heurística Posicional:** Utiliza "mapas de calor" (Heatmaps) para valorizar o controle do centro do tabuleiro e a segurança das bordas.
+* **Avaliação Dinâmica:** Pesos diferenciados para Pedras, Damas, Mobilidade e proteção da primeira linha (Defesa de Base).
 
 ### 📜 Motor de Regras (Rigorous Engine)
-- **Lei da Maioria:** Implementação estrita da regra que obriga o jogador a escolher o movimento que captura o maior número de peças.
-- **Captura Obrigatória:** O sistema valida e força capturas quando disponíveis.
-- **Dama Voadora:** Suporte completo para movimentos de damas a longa distância e pouso em qualquer casa livre subsequente.
-- **Captura para Trás:** Pedras andam para frente, mas capturam em ambas as direções.
+* **Lei da Maioria:** Implementação estrita da regra oficial que **obriga** o jogador a escolher a jogada que captura o maior número de peças disponível.
+* **Captura Obrigatória:** O sistema valida e força a captura sempre que possível.
+* **Dama Voadora:** Suporte completo para movimentos de damas a longa distância e pouso em qualquer casa livre após a peça capturada.
+* **Captura Bidirecional:** Pedras andam apenas para frente, mas podem capturar tanto para frente quanto para trás.
 
 ### 🖥️ Interface Gráfica (GUI)
-- Desenvolvida com **Tkinter** (Nativo do Python).
-- Destaque visual para movimentos possíveis e últimas jogadas.
-- Sistema de menus (Novo Jogo, Sair).
-- Feedback de status em tempo real.
+* Desenvolvida com **Tkinter** (Biblioteca nativa do Python, sem dependências pesadas).
+* Visualização clara de movimentos válidos (destaque em verde).
+* Menu de opções (Jogar Novamente, Sair).
+* Feedback de status em tempo real (Turno do Jogador vs IA Pensando).
 
 ---
 
 ## 📷 Screenshots
 
-| Tabuleiro Inicial | Sugestão de Movimento |
+| Tabuleiro Inicial | Destaque de Movimento |
 |:---:|:---:|
-| *(Insira uma imagem do tabuleiro aqui)* | *(Insira uma imagem de uma jogada aqui)* |
+| *(Insira aqui uma imagem do tabuleiro inicial)* | *(Insira aqui uma imagem mostrando os hints de jogada)* |
 
 ---
 
 ## 🚀 Instalação e Execução
 
-Este projeto utiliza apenas a **Biblioteca Padrão do Python**. Não é necessário instalar dependências externas (como numpy ou pygame).
+Este projeto foi desenhado para ser leve e portátil. Ele utiliza **apenas a Biblioteca Padrão do Python**. Não é necessário instalar pacotes externos via `pip` (como numpy ou pygame).
 
 ### Pré-requisitos
-- Python 3.x instalado.
-- (Apenas Linux) Certifique-se de ter o `tkinter` instalado: `sudo apt-get install python3-tk`
+* Python 3.8 ou superior instalado.
+* **(Apenas Linux):** Em algumas distros, o Tkinter deve ser instalado separadamente:
+    ```bash
+    sudo apt-get install python3-tk
+    ```
 
-### Passos
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/seu-usuario/damas-python-ai.git](https://github.com/seu-usuario/damas-python-ai.git)
-   cd damas-python-ai
+### Como Rodar
+1.  Clone o repositório:
+    ```bash
+    git clone [https://github.com/seu-usuario/damas-python-ai.git](https://github.com/seu-usuario/damas-python-ai.git)
+    cd damas-python-ai
+    ```
+
+2.  Execute o jogo:
+    ```bash
+    python app.py
+    ```
+
+---
+
+## 📂 Estrutura do Projeto
+
+O código segue princípios de *Clean Code* e separação de responsabilidades (MVC - Model View Controller adaptado):
+
+```text
+.
+├── app.py           # Entry Point & Interface Gráfica (View/Controller)
+├── regras.py        # Motor de Regras e Lógica do Tabuleiro (Model/Truth Source)
+├── ia.py            # Lógica da Inteligência Artificial (AI Service)
+├── requirements.txt # Documentação de dependências (Vazio/Informativo)
+└── README.md        # Documentação do projeto

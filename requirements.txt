@@ -1,0 +1,6 @@
+# Este projeto utiliza apenas a Biblioteca Padrão do Python.
+# Não é necessário instalar pacotes via pip (ex: numpy, pandas).
+#
+# Dependências de Sistema (apenas para Linux):
+# Se estiver usando Linux (Ubuntu/Debian) e ocorrer erro no tkinter, execute:
+# sudo apt-get install python3-tk

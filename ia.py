@@ -57,10 +57,6 @@ class DamasAI:
         return score
 
     def quiescence(self, board, alpha, beta, player_color):
-        """
-        Busca de Quiescência: Continua a busca além do limite de profundidade
-        apenas para movimentos de captura, evitando o 'Horizon Effect'.
-        """
         stand_pat = self.evaluate(board, player_color)
         self.nodes_evaluated += 1
 

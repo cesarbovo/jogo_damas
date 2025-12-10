@@ -29,10 +29,6 @@ class DamasAI:
         return best_move
 
     def evaluate(self, board, player_color):
-        """
-        Avalia o tabuleiro do ponto de vista do 'player_color'.
-        Retorna positivo se 'player_color' estiver ganhando.
-        """
         score = 0
         my_pieces = 0
         enemy_pieces = 0

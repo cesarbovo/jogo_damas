@@ -34,8 +34,7 @@ Uma implementação profissional do jogo de Damas (Regras Brasileiras/Internacio
 
 | Tabuleiro Inicial | Destaque de Movimento |
 |:---:|:---:|
-| <img width="388" height="462" alt="image" src="https://github.com/user-attachments/assets/1c701add-c796-4754-9ffe-8e063ef221eb" /> |
- | <img width="388" height="462" alt="image" src="https://github.com/user-attachments/assets/2137e414-cc8c-41ea-916c-7319d3dd77bc" /> |
+| <img width="388" height="462" alt="image" src="https://github.com/user-attachments/assets/1c701add-c796-4754-9ffe-8e063ef221eb" /> | | <img width="388" height="462" alt="image" src="https://github.com/user-attachments/assets/2137e414-cc8c-41ea-916c-7319d3dd77bc" /> |
 
 ---
 

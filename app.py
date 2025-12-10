@@ -4,26 +4,22 @@ from regras import DamasRules, BRANCO, VERMELHO
 from ia import DamasAI
 import sys
 
-# Configurações Visuais
 COR_CASA_CLARA = "#F0D9B5"
 COR_CASA_ESCURA = "#B58863"
 COR_PECA_BRANCA = "#FFFFFF"
 COR_PECA_VERMELHA = "#FF4444"
-COR_DESTINO = "#AAFF00"  # Verde limão para movimentos válidos
+COR_DESTINO = "#AAFF00"
 
 class DamasApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Damas AI - Profissional")
         
-        # Criação do Menu
         self.create_menu()
 
-        # Inicialização do Jogo
         self.ai = DamasAI(depth=4)
         self.reset_game()
 
-        # Setup UI
         self.canvas = tk.Canvas(root, width=512, height=512)
         self.canvas.pack()
         self.canvas.bind("<Button-1>", self.on_click)
@@ -36,8 +32,7 @@ class DamasApp:
     def create_menu(self):
         menubar = Menu(self.root)
         self.root.config(menu=menubar)
-
-        # Menu Arquivo
+        
         file_menu = Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Opções", menu=file_menu)
         file_menu.add_command(label="Jogar Novamente", command=self.reset_game)
@@ -59,7 +54,6 @@ class DamasApp:
         self.canvas.delete("all")
         CELL_SIZE = 64
         
-        # Desenhar casas
         for r in range(8):
             for c in range(8):
                 x1, y1 = c * CELL_SIZE, r * CELL_SIZE
@@ -67,13 +61,11 @@ class DamasApp:
                 color = COR_CASA_CLARA if (r + c) % 2 == 0 else COR_CASA_ESCURA
                 self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="")
 
-        # Desenhar Destaques de Movimento
         for move in self.valid_moves_for_selected:
             end_r, end_c = move['end']
             x1, y1 = end_c * CELL_SIZE, end_r * CELL_SIZE
             self.canvas.create_oval(x1+20, y1+20, x1+44, y1+44, fill=COR_DESTINO, outline="")
 
-        # Desenhar Peças
         for r in range(8):
             for c in range(8):
                 piece = self.board[r][c]
@@ -88,7 +80,6 @@ class DamasApp:
                     if abs(piece) == 2:
                         self.canvas.create_text((x1+x2)/2, (y1+y2)/2, text="K", font=("Arial", 12, "bold"))
         
-        # Highlight seleção
         if self.selected_piece:
             r, c = self.selected_piece
             x1, y1 = c * CELL_SIZE, r * CELL_SIZE
@@ -99,7 +90,6 @@ class DamasApp:
 
         c, r = event.x // 64, event.y // 64
         
-        # 1. Clique no Destino (Realizar Movimento)
         move_to_execute = None
         for move in self.valid_moves_for_selected:
             if move['end'] == (r, c):
@@ -110,7 +100,6 @@ class DamasApp:
             self.execute_move(move_to_execute)
             return
 
-        # 2. Clique na Peça (Selecionar)
         if self.board[r][c] > 0: 
             all_valid_moves = DamasRules.get_valid_moves(self.board, self.turn)
             my_moves = [m for m in all_valid_moves if m['start'] == (r, c)]
@@ -135,9 +124,9 @@ class DamasApp:
         self.turn = VERMELHO 
         self.draw_board()
         self.status_label.config(text="IA Pensando...")
-        self.root.update() # Força atualização visual antes da IA pensar
+        self.root.update()
         
-        self.root.after(200, self.ai_turn) # Pequeno delay para UX
+        self.root.after(200, self.ai_turn)
 
     def ai_turn(self):
         best_move = self.ai.get_best_move(self.board, VERMELHO)

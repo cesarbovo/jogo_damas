@@ -64,21 +64,21 @@ class DamasApp:
         
         for r in range(8):
             for c in range(8):
-                x1, y1 = c * CELL_SIZE, r * CELL_SIZE
+                x1, y1 = c * CELL_SIZE, (7 - r) * CELL_SIZE
                 x2, y2 = x1 + CELL_SIZE, y1 + CELL_SIZE
                 color = COR_CASA_CLARA if (r + c) % 2 == 0 else COR_CASA_ESCURA
                 self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="")
 
         for move in self.valid_moves_for_selected:
             end_r, end_c = move['end']
-            x1, y1 = end_c * CELL_SIZE, end_r * CELL_SIZE
+            x1, y1 = end_c * CELL_SIZE, (7 - end_r) * CELL_SIZE
             self.canvas.create_oval(x1+20, y1+20, x1+44, y1+44, fill=COR_DESTINO, outline="")
 
         for r in range(8):
             for c in range(8):
                 piece = self.board[r][c]
                 if piece != 0:
-                    x1, y1 = c * CELL_SIZE + 10, r * CELL_SIZE + 10
+                    x1, y1 = c * CELL_SIZE + 10, (7 - r) * CELL_SIZE + 10
                     x2, y2 = x1 + 44, y1 + 44
                     color = COR_PECA_BRANCA if piece > 0 else COR_PECA_VERMELHA
                     outline = "gold" if abs(piece) == 2 else "black"
@@ -92,21 +92,19 @@ class DamasApp:
                         center_y = (y1 + y2) / 2
                         
                         if self.img_coroa:
-                            # Desenha a imagem centralizada
                             self.canvas.create_image(center_x, center_y, image=self.img_coroa)
                         else:
-                            # Fallback: Desenha o 'D' se a imagem não carregou
                             self.canvas.create_text(center_x, center_y, text="D", font=("Arial", 12, "bold"))
         
         if self.selected_piece:
             r, c = self.selected_piece
-            x1, y1 = c * CELL_SIZE, r * CELL_SIZE
+            x1, y1 = c * CELL_SIZE, (7 - r) * CELL_SIZE
             self.canvas.create_rectangle(x1, y1, x1+64, y1+64, outline="blue", width=3)
 
     def on_click(self, event):
         if self.turn != BRANCO: return 
 
-        c, r = event.x // 64, event.y // 64
+        c, r = event.x // 64, 7 - (event.y // 64)
         
         move_to_execute = None
         for move in self.valid_moves_for_selected:

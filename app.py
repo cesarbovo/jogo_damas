@@ -16,6 +16,13 @@ class DamasApp:
         self.root = root
         self.root.title("Damas AI - Profissional")
         
+        # Imagem da Dama
+        try:
+            self.img_coroa = tk.PhotoImage(file="coroa.png")
+        except Exception:
+            print("Imagem 'coroa.png' não encontrada. Usando 'D' como fallback.")
+            self.img_coroa = None
+
         # Criação do Menu
         self.create_menu()
 
@@ -85,8 +92,18 @@ class DamasApp:
                     width = 4 if abs(piece) == 2 else 1
                     
                     self.canvas.create_oval(x1, y1, x2, y2, fill=color, outline=outline, width=width)
+                    
+                    # Dama
                     if abs(piece) == 2:
-                        self.canvas.create_text((x1+x2)/2, (y1+y2)/2, text="K", font=("Arial", 12, "bold"))
+                        center_x = (x1 + x2) / 2
+                        center_y = (y1 + y2) / 2
+                        
+                        if self.img_coroa:
+                            # Desenha a imagem centralizada
+                            self.canvas.create_image(center_x, center_y, image=self.img_coroa)
+                        else:
+                            # Fallback: Desenha o 'D' se a imagem não carregou
+                            self.canvas.create_text(center_x, center_y, text="D", font=("Arial", 12, "bold"))
         
         # Highlight seleção
         if self.selected_piece:

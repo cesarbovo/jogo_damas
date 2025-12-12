@@ -74,6 +74,7 @@ O código segue princípios de *Clean Code* e separação de responsabilidades (
 ├── ia.py            # Lógica da Inteligência Artificial (AI Service)
 ├── requirements.txt # Documentação de dependências (Vazio/Informativo)
 └── README.md        # Documentação do projeto
+```
 
 ---
 

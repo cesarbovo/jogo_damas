@@ -74,3 +74,28 @@ O código segue princípios de *Clean Code* e separação de responsabilidades (
 ├── ia.py            # Lógica da Inteligência Artificial (AI Service)
 ├── requirements.txt # Documentação de dependências (Vazio/Informativo)
 └── README.md        # Documentação do projeto
+
+---
+
+## 🎓 Visualizador Educativo (Minimax Debugger)
+
+Localizado em visualizador_educativo.py, este módulo atua como uma ferramenta pedagógica interativa para desmistificar o funcionamento da Inteligência Artificial. Ao contrário do jogo principal, esta interface oferece um "Raio-X" do processo de decisão do algoritmo:
+
+* **Acompanhamento de Código em Tempo Real:** Exibe o pseudocódigo do algoritmo Minimax e destaca visualmente a linha exata que está sendo executada a cada passo.
+
+* **Monitoramento de Variáveis:** Um painel lateral exibe os valores dinâmicos de Alpha, Beta, Profundidade e a Avaliação atual da árvore de busca.
+
+* **Tabuleiro Fantasma (Ghost Board):** Renderiza graficamente as simulações hipotéticas e movimentos futuros que a IA está calculando antes de tomar a decisão final.
+
+* **Controle de Execução:** Permite ao usuário ajustar a velocidade do raciocínio e a profundidade da IA dinamicamente através de sliders.
+
+---
+
+## 🎓 Sobre o Projeto
+
+Este projeto foi desenvolvido como **Trabalho Final da disciplina de Introdução à Inteligência Artificial**.
+
+**👥 Autores (2º Ciclo):**
+* César Augusto Oliveira Bovo
+* Elisa Almeida Alcântara
+* Guilherme Peres Romanzotti
